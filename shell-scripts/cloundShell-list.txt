@@ -1,0 +1,10 @@
+Seguir o processo abaixo para provisionar, executar a job e desprovisionar cluster emr-on-eks:
+
+Passo 1 - Provisionar emr-on-eks:
+curl https://raw.githubusercontent.com/luisgoncalves98/farm-bi-emr-on-eks/main/shell-scripts/provision.sh | bash
+
+Passo 2 - Executar a Job (!Não finalizado - não usar!)
+curl git-raw | bash
+
+Passo 3 - Desprovisionar emr-on-eks:
+curl https://raw.githubusercontent.com/luisgoncalves98/farm-bi-emr-on-eks/main/shell-scripts/deprovision.sh | bash
