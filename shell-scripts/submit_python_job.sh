@@ -14,19 +14,17 @@ aws logs create-log-group --log-group-name=/emr-on-eks-logs/$EMRCLUSTERNAME
 # Rodando o Job
 aws emr-containers start-job-run \
     --virtual-cluster-id $EMRCLUSTERID \
-    --name spark-pi-pod-template \
+    --name el_emr_on_eks_py \
     --execution-role-arn $ROLEARN \
-    --release-label emr-5.33.0-latest \
+    --release-label emr-6.2.0-latest \
     --job-driver '{
         "sparkSubmitJobDriver": {
-            "entryPoint": "s3://'$OUTPUTS3BUCKET'/someAppCode.py",
-            "sparkSubmitParameters": 
-                " --conf spark.kubernetes.driver.podTemplateFile=\"s3://'$OUTPUTS3BUCKET'/pod_templates/driver_pod_template.yaml\
-                " --conf spark.kubernetes.executor.podTemplateFile=\"s3://'$OUTPUTS3BUCKET'/pod_templates/executor_pod_template.yaml\
-                " --conf spark.executor.instances=2 --conf spark.executor.memory=2G --conf spark.executor.cores=2"
+            "entryPoint": "s3://'$OUTPUTS3BUCKET'/scripts/el_platfarm.ipynb",
+        "sparkSubmitParameters": 
+            " --conf spark.executor.instances=2 --conf spark.executor.memory=2G --conf spark.executor.cores=2"
         }
     }'
 
-echo "Executado: submit_arc_job"
+echo "Executado: submit_python_job"
 echo "Status disponíveis em: "${EMRCLUSTERID}
 echo "Resultados disponíveis em: "${OUTPUTS3BUCKET}
