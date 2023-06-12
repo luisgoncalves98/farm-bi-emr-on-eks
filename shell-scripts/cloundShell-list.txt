@@ -3,8 +3,8 @@ Seguir o processo abaixo para provisionar, executar a job e desprovisionar clust
 Passo 1 - Provisionar emr-on-eks:
 curl https://raw.githubusercontent.com/luisgoncalves98/farm-bi-emr-on-eks/main/shell-scripts/provision.sh | bash
 
-Passo 2 - Executar a Job (!Não finalizado - não usar!)
-curl git-raw | bash
+Passo 2 - Executar a Job (!Em teste!)
+curl https://raw.githubusercontent.com/luisgoncalves98/farm-bi-emr-on-eks/main/shell-scripts/submit_python_job.sh | bash
 
 Passo 3 - Desprovisionar emr-on-eks:
 curl https://raw.githubusercontent.com/luisgoncalves98/farm-bi-emr-on-eks/main/shell-scripts/deprovision.sh | bash
